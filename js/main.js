@@ -72,17 +72,32 @@ function setBadgeColor(meta) {
   badge.style.color = meta.color;
 }
 
-function initHomePage() {
+function resetTransientState() {
   clearTimer(state);
+  state.stepQueue = [];
+  state.stepIdx = 0;
+  state.logs = [];
+  state.mstTC = 0;
+}
+
+function resolveKnownAlgoSlug(slug) {
+  const normalizedSlug = normalizeAlgoSlug(slug);
+  return normalizedSlug && ALGO_META[normalizedSlug] ? normalizedSlug : null;
+}
+
+function initHomePage() {
+  resetTransientState();
   state.currentAlgo = null;
 }
 
 function initAlgorithmPage(algoPage, slug) {
-  const normalizedSlug = normalizeAlgoSlug(slug);
-  state.currentAlgo = normalizedSlug;
-  algoPage.dataset.algo = normalizedSlug || "";
+  resetTransientState();
 
-  const meta = normalizedSlug ? ALGO_META[normalizedSlug] : null;
+  const resolvedSlug = resolveKnownAlgoSlug(slug);
+  state.currentAlgo = resolvedSlug;
+  algoPage.dataset.algo = resolvedSlug || "";
+
+  const meta = resolvedSlug ? ALGO_META[resolvedSlug] : null;
   setText("algo-title", meta?.title || "Algorithm");
   setText("algo-tag-badge", meta?.tag || "");
   setBadgeColor(meta);
