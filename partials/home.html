@@ -1,84 +1,84 @@
 <section id="home-page" data-page="home" class="space-y-8">
-  <div class="hero rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200 md:p-8">
-    <div class="hero-tag mb-3 inline-flex rounded-full bg-cyan-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-cyan-700">DAA Lab Project</div>
-    <h1 class="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">Learn Algorithms <strong class="text-cyan-700">Visually</strong></h1>
-    <p>
+  <div class="rounded-card border border-slate-200 bg-white p-6 shadow-sm md:p-8">
+    <div class="mb-3 inline-flex rounded-pill bg-brand-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-700">DAA Lab Project</div>
+    <h1 class="text-3xl font-bold tracking-tight text-slate-900 md:text-4xl">Learn Algorithms <strong class="text-brand-700">Visually</strong></h1>
+    <p class="mt-3 max-w-2xl text-slate-600">
       Step-by-step visualizations of classic algorithms. Enter your own data,
       then load each algorithm workspace in-place.
     </p>
   </div>
 
-  <div class="stats-bar grid gap-3 sm:grid-cols-3">
-    <div class="stat-item"><div class="stat-num">8</div><div class="stat-lbl">Algorithms</div></div>
-    <div class="stat-item"><div class="stat-num">4</div><div class="stat-lbl">Categories</div></div>
-    <div class="stat-item"><div class="stat-num">Many</div><div class="stat-lbl">Custom Inputs</div></div>
+  <div class="grid gap-3 sm:grid-cols-3">
+    <div class="rounded-card border border-slate-200 bg-white px-4 py-5 text-center shadow-sm"><div class="font-mono text-3xl font-bold text-brand-600">8</div><div class="mt-1 text-xs uppercase tracking-widest text-slate-500">Algorithms</div></div>
+    <div class="rounded-card border border-slate-200 bg-white px-4 py-5 text-center shadow-sm"><div class="font-mono text-3xl font-bold text-brand-600">4</div><div class="mt-1 text-xs uppercase tracking-widest text-slate-500">Categories</div></div>
+    <div class="rounded-card border border-slate-200 bg-white px-4 py-5 text-center shadow-sm"><div class="font-mono text-3xl font-bold text-brand-600">Many</div><div class="mt-1 text-xs uppercase tracking-widest text-slate-500">Custom Inputs</div></div>
   </div>
 
-  <div class="section-header"><h2 class="text-xl font-semibold text-slate-800">// All Algorithms</h2></div>
+  <div class="flex items-center justify-between"><h2 class="font-mono text-sm uppercase tracking-widest text-slate-600">All Algorithms</h2></div>
 
-  <div class="cards-grid grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    <a class="algo-card block rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2" style="--card-color:#7c6af7" data-algo="complexity" href="#/algo/complexity" hx-get="partials/algo-layout.html?algo=complexity" hx-target="#app" hx-push-url="#/algo/complexity">
-      <div class="card-num">01</div>
-      <div class="card-icon-row"><div class="card-icon">AN</div><span class="card-badge">Analysis</span></div>
-      <div class="card-title">Complexity Analysis</div>
-      <div class="card-desc">Compare loop complexity behavior with simple data samples.</div>
-      <div class="card-footer"><span class="card-complexity">O(1) to O(n^2)</span><div class="card-arrow">-&gt;</div></div>
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <a class="group block rounded-card border border-t-4 border-slate-200 border-t-violet-400 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2" data-algo="complexity" href="#/algo/complexity" hx-get="partials/algo-layout.html?algo=complexity" hx-target="#app" hx-push-url="#/algo/complexity">
+      <div class="mb-4 font-mono text-xs text-slate-500">01</div>
+      <div class="mb-4 flex items-center gap-3"><div class="grid h-10 w-10 place-items-center rounded-md bg-violet-100 text-sm font-semibold text-violet-700">AN</div><span class="rounded-pill bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700">Analysis</span></div>
+      <div class="text-base font-semibold text-slate-900">Complexity Analysis</div>
+      <div class="mt-2 text-sm text-slate-600">Compare loop complexity behavior with simple data samples.</div>
+      <div class="mt-5 flex items-center justify-between"><span class="font-mono text-xs text-slate-500">O(1) to O(n^2)</span><div class="rounded-md border border-slate-300 px-2 py-1 text-xs text-slate-500 transition group-hover:border-violet-400 group-hover:text-violet-600">-&gt;</div></div>
     </a>
 
-    <a class="algo-card block rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2" style="--card-color:#4ecdc4" data-algo="mst" href="#/algo/mst" hx-get="partials/algo-layout.html?algo=mst" hx-target="#app" hx-push-url="#/algo/mst">
-      <div class="card-num">02</div>
-      <div class="card-icon-row"><div class="card-icon">GR</div><span class="card-badge">Greedy</span></div>
-      <div class="card-title">Minimum Spanning Tree</div>
-      <div class="card-desc">Visual edge selection with Kruskal's algorithm.</div>
-      <div class="card-footer"><span class="card-complexity">O(E log V)</span><div class="card-arrow">-&gt;</div></div>
+    <a class="group block rounded-card border border-t-4 border-slate-200 border-t-teal-400 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2" data-algo="mst" href="#/algo/mst" hx-get="partials/algo-layout.html?algo=mst" hx-target="#app" hx-push-url="#/algo/mst">
+      <div class="mb-4 font-mono text-xs text-slate-500">02</div>
+      <div class="mb-4 flex items-center gap-3"><div class="grid h-10 w-10 place-items-center rounded-md bg-teal-100 text-sm font-semibold text-teal-700">GR</div><span class="rounded-pill bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700">Greedy</span></div>
+      <div class="text-base font-semibold text-slate-900">Minimum Spanning Tree</div>
+      <div class="mt-2 text-sm text-slate-600">Visual edge selection with Kruskal's algorithm.</div>
+      <div class="mt-5 flex items-center justify-between"><span class="font-mono text-xs text-slate-500">O(E log V)</span><div class="rounded-md border border-slate-300 px-2 py-1 text-xs text-slate-500 transition group-hover:border-teal-400 group-hover:text-teal-600">-&gt;</div></div>
     </a>
 
-    <a class="algo-card block rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2" style="--card-color:#ffd93d" data-algo="knapsack" href="#/algo/knapsack" hx-get="partials/algo-layout.html?algo=knapsack" hx-target="#app" hx-push-url="#/algo/knapsack">
-      <div class="card-num">03</div>
-      <div class="card-icon-row"><div class="card-icon">KN</div><span class="card-badge">Greedy</span></div>
-      <div class="card-title">Fractional Knapsack</div>
-      <div class="card-desc">Maximize value under weight constraints.</div>
-      <div class="card-footer"><span class="card-complexity">O(n log n)</span><div class="card-arrow">-&gt;</div></div>
+    <a class="group block rounded-card border border-t-4 border-slate-200 border-t-amber-400 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2" data-algo="knapsack" href="#/algo/knapsack" hx-get="partials/algo-layout.html?algo=knapsack" hx-target="#app" hx-push-url="#/algo/knapsack">
+      <div class="mb-4 font-mono text-xs text-slate-500">03</div>
+      <div class="mb-4 flex items-center gap-3"><div class="grid h-10 w-10 place-items-center rounded-md bg-amber-100 text-sm font-semibold text-amber-700">KN</div><span class="rounded-pill bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700">Greedy</span></div>
+      <div class="text-base font-semibold text-slate-900">Fractional Knapsack</div>
+      <div class="mt-2 text-sm text-slate-600">Maximize value under weight constraints.</div>
+      <div class="mt-5 flex items-center justify-between"><span class="font-mono text-xs text-slate-500">O(n log n)</span><div class="rounded-md border border-slate-300 px-2 py-1 text-xs text-slate-500 transition group-hover:border-amber-400 group-hover:text-amber-600">-&gt;</div></div>
     </a>
 
-    <a class="algo-card block rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2" style="--card-color:#ff6b6b" data-algo="activity" href="#/algo/activity" hx-get="partials/algo-layout.html?algo=activity" hx-target="#app" hx-push-url="#/algo/activity">
-      <div class="card-num">04</div>
-      <div class="card-icon-row"><div class="card-icon">AC</div><span class="card-badge">Greedy</span></div>
-      <div class="card-title">Activity Selection</div>
-      <div class="card-desc">Choose the maximum compatible activity set.</div>
-      <div class="card-footer"><span class="card-complexity">O(n log n)</span><div class="card-arrow">-&gt;</div></div>
+    <a class="group block rounded-card border border-t-4 border-slate-200 border-t-rose-400 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2" data-algo="activity" href="#/algo/activity" hx-get="partials/algo-layout.html?algo=activity" hx-target="#app" hx-push-url="#/algo/activity">
+      <div class="mb-4 font-mono text-xs text-slate-500">04</div>
+      <div class="mb-4 flex items-center gap-3"><div class="grid h-10 w-10 place-items-center rounded-md bg-rose-100 text-sm font-semibold text-rose-700">AC</div><span class="rounded-pill bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700">Greedy</span></div>
+      <div class="text-base font-semibold text-slate-900">Activity Selection</div>
+      <div class="mt-2 text-sm text-slate-600">Choose the maximum compatible activity set.</div>
+      <div class="mt-5 flex items-center justify-between"><span class="font-mono text-xs text-slate-500">O(n log n)</span><div class="rounded-md border border-slate-300 px-2 py-1 text-xs text-slate-500 transition group-hover:border-rose-400 group-hover:text-rose-600">-&gt;</div></div>
     </a>
 
-    <a class="algo-card block rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2" style="--card-color:#a8e063" data-algo="subarray" href="#/algo/subarray" hx-get="partials/algo-layout.html?algo=subarray" hx-target="#app" hx-push-url="#/algo/subarray">
-      <div class="card-num">05</div>
-      <div class="card-icon-row"><div class="card-icon">MS</div><span class="card-badge">Divide &amp; Conquer</span></div>
-      <div class="card-title">Maximum Subarray</div>
-      <div class="card-desc">Find the highest-sum contiguous subarray.</div>
-      <div class="card-footer"><span class="card-complexity">O(n log n)</span><div class="card-arrow">-&gt;</div></div>
+    <a class="group block rounded-card border border-t-4 border-slate-200 border-t-lime-400 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2" data-algo="subarray" href="#/algo/subarray" hx-get="partials/algo-layout.html?algo=subarray" hx-target="#app" hx-push-url="#/algo/subarray">
+      <div class="mb-4 font-mono text-xs text-slate-500">05</div>
+      <div class="mb-4 flex items-center gap-3"><div class="grid h-10 w-10 place-items-center rounded-md bg-lime-100 text-sm font-semibold text-lime-700">MS</div><span class="rounded-pill bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700">Divide &amp; Conquer</span></div>
+      <div class="text-base font-semibold text-slate-900">Maximum Subarray</div>
+      <div class="mt-2 text-sm text-slate-600">Find the highest-sum contiguous subarray.</div>
+      <div class="mt-5 flex items-center justify-between"><span class="font-mono text-xs text-slate-500">O(n log n)</span><div class="rounded-md border border-slate-300 px-2 py-1 text-xs text-slate-500 transition group-hover:border-lime-400 group-hover:text-lime-600">-&gt;</div></div>
     </a>
 
-    <a class="algo-card block rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2" style="--card-color:#7c6af7" data-algo="lcs" href="#/algo/lcs" hx-get="partials/algo-layout.html?algo=lcs" hx-target="#app" hx-push-url="#/algo/lcs">
-      <div class="card-num">06</div>
-      <div class="card-icon-row"><div class="card-icon">LC</div><span class="card-badge">Dynamic Programming</span></div>
-      <div class="card-title">LCS</div>
-      <div class="card-desc">Compute longest common subsequence visually.</div>
-      <div class="card-footer"><span class="card-complexity">O(m * n)</span><div class="card-arrow">-&gt;</div></div>
+    <a class="group block rounded-card border border-t-4 border-slate-200 border-t-indigo-400 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2" data-algo="lcs" href="#/algo/lcs" hx-get="partials/algo-layout.html?algo=lcs" hx-target="#app" hx-push-url="#/algo/lcs">
+      <div class="mb-4 font-mono text-xs text-slate-500">06</div>
+      <div class="mb-4 flex items-center gap-3"><div class="grid h-10 w-10 place-items-center rounded-md bg-indigo-100 text-sm font-semibold text-indigo-700">LC</div><span class="rounded-pill bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700">Dynamic Programming</span></div>
+      <div class="text-base font-semibold text-slate-900">LCS</div>
+      <div class="mt-2 text-sm text-slate-600">Compute longest common subsequence visually.</div>
+      <div class="mt-5 flex items-center justify-between"><span class="font-mono text-xs text-slate-500">O(m * n)</span><div class="rounded-md border border-slate-300 px-2 py-1 text-xs text-slate-500 transition group-hover:border-indigo-400 group-hover:text-indigo-600">-&gt;</div></div>
     </a>
 
-    <a class="algo-card block rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2" style="--card-color:#4ecdc4" data-algo="obst" href="#/algo/obst" hx-get="partials/algo-layout.html?algo=obst" hx-target="#app" hx-push-url="#/algo/obst">
-      <div class="card-num">07</div>
-      <div class="card-icon-row"><div class="card-icon">OB</div><span class="card-badge">Dynamic Programming</span></div>
-      <div class="card-title">OBST</div>
-      <div class="card-desc">Build an optimal binary search tree layout.</div>
-      <div class="card-footer"><span class="card-complexity">O(n^3)</span><div class="card-arrow">-&gt;</div></div>
+    <a class="group block rounded-card border border-t-4 border-slate-200 border-t-emerald-400 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2" data-algo="obst" href="#/algo/obst" hx-get="partials/algo-layout.html?algo=obst" hx-target="#app" hx-push-url="#/algo/obst">
+      <div class="mb-4 font-mono text-xs text-slate-500">07</div>
+      <div class="mb-4 flex items-center gap-3"><div class="grid h-10 w-10 place-items-center rounded-md bg-emerald-100 text-sm font-semibold text-emerald-700">OB</div><span class="rounded-pill bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700">Dynamic Programming</span></div>
+      <div class="text-base font-semibold text-slate-900">OBST</div>
+      <div class="mt-2 text-sm text-slate-600">Build an optimal binary search tree layout.</div>
+      <div class="mt-5 flex items-center justify-between"><span class="font-mono text-xs text-slate-500">O(n^3)</span><div class="rounded-md border border-slate-300 px-2 py-1 text-xs text-slate-500 transition group-hover:border-emerald-400 group-hover:text-emerald-600">-&gt;</div></div>
     </a>
 
-    <a class="algo-card block rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2" style="--card-color:#ff6b6b" data-algo="hamiltonian" href="#/algo/hamiltonian" hx-get="partials/algo-layout.html?algo=hamiltonian" hx-target="#app" hx-push-url="#/algo/hamiltonian">
-      <div class="card-num">08</div>
-      <div class="card-icon-row"><div class="card-icon">HC</div><span class="card-badge">Backtracking</span></div>
-      <div class="card-title">Hamiltonian Cycle</div>
-      <div class="card-desc">Search cycle paths with backtracking steps.</div>
-      <div class="card-footer"><span class="card-complexity">O(n!)</span><div class="card-arrow">-&gt;</div></div>
+    <a class="group block rounded-card border border-t-4 border-slate-200 border-t-red-400 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2" data-algo="hamiltonian" href="#/algo/hamiltonian" hx-get="partials/algo-layout.html?algo=hamiltonian" hx-target="#app" hx-push-url="#/algo/hamiltonian">
+      <div class="mb-4 font-mono text-xs text-slate-500">08</div>
+      <div class="mb-4 flex items-center gap-3"><div class="grid h-10 w-10 place-items-center rounded-md bg-red-100 text-sm font-semibold text-red-700">HC</div><span class="rounded-pill bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700">Backtracking</span></div>
+      <div class="text-base font-semibold text-slate-900">Hamiltonian Cycle</div>
+      <div class="mt-2 text-sm text-slate-600">Search cycle paths with backtracking steps.</div>
+      <div class="mt-5 flex items-center justify-between"><span class="font-mono text-xs text-slate-500">O(n!)</span><div class="rounded-md border border-slate-300 px-2 py-1 text-xs text-slate-500 transition group-hover:border-red-400 group-hover:text-red-600">-&gt;</div></div>
     </a>
   </div>
 </section>

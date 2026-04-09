@@ -4,15 +4,45 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DAA Visualizer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind = {
+      config: {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: "#ecfeff",
+                100: "#cffafe",
+                500: "#06b6d4",
+                600: "#0891b2",
+                700: "#0e7490"
+              }
+            },
+            fontFamily: {
+              sans: ["Space Grotesk", "ui-sans-serif", "system-ui", "sans-serif"],
+              mono: ["JetBrains Mono", "ui-monospace", "monospace"]
+            },
+            borderRadius: {
+              card: "1rem",
+              pill: "999px"
+            }
+          }
+        }
+      }
+    };
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="min-h-screen bg-slate-100 text-slate-900">
+<body class="min-h-screen bg-gradient-to-b from-slate-100 via-slate-100 to-cyan-50/60 font-sans text-slate-900">
   <header class="sticky top-0 z-10 border-b border-slate-200 bg-white/95 backdrop-blur">
     <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4">
-      <div class="logo text-lg font-bold tracking-wide">DAA<span class="text-cyan-600">_</span>VISUALIZER</div>
+      <div class="text-lg font-bold tracking-wide">DAA<span class="text-brand-600">_</span>VISUALIZER</div>
       <nav class="flex items-center gap-2 text-sm font-medium" aria-label="Primary">
       <a
-        class="active rounded-md bg-slate-900 px-3 py-2 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2"
+        class="rounded-md bg-slate-900 px-3 py-2 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
         data-page-link="home"
         href="#/home"
         hx-get="partials/home.html"
@@ -22,7 +52,7 @@
         Home
       </a>
       <a
-        class="rounded-md px-3 py-2 text-slate-700 transition hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2"
+        class="rounded-md px-3 py-2 text-slate-700 transition hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
         data-page-link="algorithms"
         href="#/algorithms"
         hx-get="partials/home.html"

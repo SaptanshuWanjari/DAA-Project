@@ -1,7 +1,7 @@
 <section id="algo-page" data-page="algorithm" data-algo="" class="space-y-6">
-  <div class="algo-topbar flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm ring-1 ring-slate-200">
+  <div class="flex flex-wrap items-center gap-3 rounded-card border border-slate-200 bg-white p-4 shadow-sm">
     <a
-      class="back-btn rounded-md bg-slate-900 px-3 py-2 text-sm font-medium text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2"
+      class="rounded-md bg-slate-900 px-3 py-2 text-sm font-medium text-white transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
       href="#/home"
       hx-get="partials/home.html"
       hx-target="#app"
@@ -9,27 +9,27 @@
     >
       Back
     </a>
-    <h2 class="algo-name text-lg font-semibold text-slate-900" id="algo-title">Algorithm</h2>
-    <span class="algo-tag text-sm text-slate-600" id="algo-tag-badge"></span>
+    <h2 class="text-lg font-semibold text-slate-900" id="algo-title">Algorithm</h2>
+    <span class="rounded-pill bg-slate-100 px-2.5 py-1 text-xs font-medium uppercase tracking-wide text-slate-600" id="algo-tag-badge"></span>
   </div>
 
-  <div class="algo-layout grid gap-5 lg:grid-cols-[2fr_1fr]">
-    <div class="algo-main">
-      <div id="algo-inputs" class="input-section rounded-xl bg-white p-4 shadow-sm ring-1 ring-slate-200"></div>
+  <div class="grid gap-5 lg:grid-cols-[2fr_1fr]">
+    <div>
+      <div id="algo-inputs" class="rounded-card border border-slate-200 bg-white p-4 shadow-sm"></div>
 
-      <div class="ctrl-row mt-4 flex flex-wrap gap-2">
-        <button class="ctrl-btn primary rounded-md bg-cyan-600 px-4 py-2 text-sm font-medium text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2" data-action="run">Run</button>
-        <button class="ctrl-btn rounded-md bg-slate-200 px-4 py-2 text-sm font-medium text-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2" data-action="step">Step</button>
-        <button class="ctrl-btn danger rounded-md bg-rose-600 px-4 py-2 text-sm font-medium text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2" data-action="reset">Reset</button>
+      <div class="mt-4 flex flex-wrap gap-2">
+        <button class="rounded-md bg-brand-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2" data-action="run">Run</button>
+        <button class="rounded-md bg-slate-200 px-4 py-2 text-sm font-medium text-slate-800 transition hover:bg-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2" data-action="step">Step</button>
+        <button class="rounded-md bg-rose-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-rose-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2" data-action="reset">Reset</button>
       </div>
 
-      <div class="viz-area mt-4 rounded-xl bg-white p-4 shadow-sm ring-1 ring-slate-200">
-        <div class="viz-title mb-2 text-base font-semibold text-slate-800">Visualization</div>
+      <div class="mt-4 rounded-card border border-slate-200 bg-white p-4 shadow-sm">
+        <div class="mb-2 text-base font-semibold text-slate-800">Visualization</div>
         <div id="viz-content"></div>
       </div>
     </div>
 
-    <aside class="algo-sidebar rounded-xl bg-white p-4 shadow-sm ring-1 ring-slate-200">
+    <aside class="rounded-card border border-slate-200 bg-white p-4 shadow-sm">
       <div id="sidebar-content" class="space-y-3"></div>
     </aside>
   </div>
