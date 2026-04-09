@@ -156,7 +156,7 @@ function onAfterSwap(evt) {
   initPageFromApp(target, evt);
 }
 
-function onActionClick(evt) {
+function onDelegatedAction(evt) {
   const target = evt.target;
   if (!(target instanceof Element)) {
     return;
@@ -173,7 +173,9 @@ function onActionClick(evt) {
   }
 
   const action = actionNode.dataset.action;
-  evt.preventDefault();
+  if (evt.type === "click") {
+    evt.preventDefault();
+  }
 
   if (action !== "run" && action !== "step" && action !== "reset") {
     const handled = dispatchAlgoAction(actionNode);
@@ -211,7 +213,8 @@ setAlgoRunnerRegistry({
 document.body.addEventListener("htmx:afterSwap", onAfterSwap);
 
 if (!window[RUNNER_CONTROLS_BOUND]) {
-  document.body.addEventListener("click", onActionClick);
+  document.body.addEventListener("click", onDelegatedAction);
+  document.body.addEventListener("change", onDelegatedAction);
   window[RUNNER_CONTROLS_BOUND] = true;
 }
 
