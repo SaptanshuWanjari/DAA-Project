@@ -119,8 +119,13 @@ export function run(ctx) {
           if (info) {
             info.textContent = `Cycle found: 0 -> ${foundPath.slice(1).join(" -> ")} -> 0`;
           }
-          ctx.addLog(`Cycle found: 0 -> ${foundPath.slice(1).join(" -> ")} -> 0`);
-          ctx.renderSidebar("hamiltonian", `Hamiltonian cycle found: 0 -> ${foundPath.slice(1).join(" -> ")} -> 0`);
+          ctx.addLog(
+            `Cycle found: 0 -> ${foundPath.slice(1).join(" -> ")} -> 0`,
+          );
+          ctx.renderSidebar(
+            "hamiltonian",
+            `Hamiltonian cycle found: 0 -> ${foundPath.slice(1).join(" -> ")} -> 0`,
+          );
         });
         return true;
       }

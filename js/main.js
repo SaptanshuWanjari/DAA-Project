@@ -23,7 +23,10 @@ import * as graphcoloring from "./algorithms/graphcoloring.js";
 
 const RUNNER_CONTROLS_BOUND = "__daaRunnerControlsBound";
 const CLICK_ONLY_ACTIONS = new Set(["run", "step", "reset"]);
-const CLICK_OR_CHANGE_ACTIONS = new Set(["mst-switch-case", "gc-switch-preset"]);
+const CLICK_OR_CHANGE_ACTIONS = new Set([
+  "mst-switch-case",
+  "gc-switch-preset",
+]);
 
 const delegatedActionTickByNode = new WeakMap();
 let delegatedActionTick = 0;
@@ -223,7 +226,10 @@ function onDelegatedAction(evt) {
     return;
   }
 
-  if (CLICK_OR_CHANGE_ACTIONS.has(action) && isDuplicateDelegatedAction(actionNode, action)) {
+  if (
+    CLICK_OR_CHANGE_ACTIONS.has(action) &&
+    isDuplicateDelegatedAction(actionNode, action)
+  ) {
     return;
   }
 

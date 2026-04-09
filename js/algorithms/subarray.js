@@ -40,7 +40,13 @@ function renderArray(values) {
 function markRange(start, end) {
   const cells = document.querySelectorAll("#sub-viz > div");
   cells.forEach((cell, idx) => {
-    cell.classList.remove("ring-2", "ring-brand-500", "bg-brand-50", "bg-amber-50", "ring-amber-400");
+    cell.classList.remove(
+      "ring-2",
+      "ring-brand-500",
+      "bg-brand-50",
+      "bg-amber-50",
+      "ring-amber-400",
+    );
     if (idx >= start && idx <= end) {
       cell.classList.add("ring-2", "ring-brand-500", "bg-brand-50");
     }
@@ -86,7 +92,10 @@ export function run(ctx) {
 
     ctx.addLog(`arr[${idx}] = ${value}, cur = ${currentSum}, max = ${maxSum}`);
     const bestSlice = array.slice(bestStart, bestEnd + 1).join(", ");
-    ctx.renderSidebar("subarray", `Max sum: ${maxSum} | Subarray: [${bestSlice}]`);
+    ctx.renderSidebar(
+      "subarray",
+      `Max sum: ${maxSum} | Subarray: [${bestSlice}]`,
+    );
   });
 
   return { steps };

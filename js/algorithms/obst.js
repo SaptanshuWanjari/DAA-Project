@@ -13,7 +13,8 @@ const INPUTS_FALLBACK = `
   </div>
 `;
 
-const VIZ_HTML = '<canvas id="obst-canvas" class="w-full rounded-md border border-slate-200 bg-white" height="300"></canvas>';
+const VIZ_HTML =
+  '<canvas id="obst-canvas" class="w-full rounded-md border border-slate-200 bg-white" height="300"></canvas>';
 
 function parseValues() {
   const keys = (document.getElementById("obst-keys")?.value || "")
@@ -101,10 +102,12 @@ export function run(ctx) {
 
   if (n === 0) {
     return {
-      steps: [() => {
-        ctx.addLog("No keys provided.");
-        ctx.renderSidebar("obst", "Provide at least one key.");
-      }],
+      steps: [
+        () => {
+          ctx.addLog("No keys provided.");
+          ctx.renderSidebar("obst", "Provide at least one key.");
+        },
+      ],
     };
   }
 
@@ -124,7 +127,10 @@ export function run(ctx) {
       weight[i][j] = weight[i][j - 1] + probs[j - 1];
       cost[i][j] = Number.POSITIVE_INFINITY;
       for (let r = i; r <= j; r += 1) {
-        const candidate = (r > i ? cost[i][r - 1] : 0) + (r < j ? cost[r + 1][j] : 0) + weight[i][j];
+        const candidate =
+          (r > i ? cost[i][r - 1] : 0) +
+          (r < j ? cost[r + 1][j] : 0) +
+          weight[i][j];
         if (candidate < cost[i][j]) {
           cost[i][j] = candidate;
           root[i][j] = r;
@@ -134,15 +140,20 @@ export function run(ctx) {
   }
 
   return {
-    steps: [() => {
-      drawTree(keys, root);
-      const bestCost = cost[1][n];
-      const bestRoot = keys[root[1][n] - 1];
-      ctx.addLog(`Keys: [${keys.join(", ")}]`);
-      ctx.addLog(`Optimal expected cost: ${bestCost.toFixed(3)}`);
-      ctx.addLog(`Root key: ${bestRoot}`);
-      ctx.renderSidebar("obst", `Cost: ${bestCost.toFixed(3)} | Root: ${bestRoot}`);
-    }],
+    steps: [
+      () => {
+        drawTree(keys, root);
+        const bestCost = cost[1][n];
+        const bestRoot = keys[root[1][n] - 1];
+        ctx.addLog(`Keys: [${keys.join(", ")}]`);
+        ctx.addLog(`Optimal expected cost: ${bestCost.toFixed(3)}`);
+        ctx.addLog(`Root key: ${bestRoot}`);
+        ctx.renderSidebar(
+          "obst",
+          `Cost: ${bestCost.toFixed(3)} | Root: ${bestRoot}`,
+        );
+      },
+    ],
   };
 }
 

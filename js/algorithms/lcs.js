@@ -24,7 +24,8 @@ const VIZ_HTML = `
 function tokenChip(value, id) {
   const chip = document.createElement("div");
   chip.id = id;
-  chip.className = "flex h-8 w-8 items-center justify-center rounded border border-slate-300 font-mono text-xs text-slate-700";
+  chip.className =
+    "flex h-8 w-8 items-center justify-center rounded border border-slate-300 font-mono text-xs text-slate-700";
   chip.textContent = value;
   return chip;
 }
@@ -44,7 +45,8 @@ function buildTable(s1, s2) {
   headerRow.append(h0, h1);
   [...s2].forEach((char) => {
     const th = document.createElement("th");
-    th.className = "h-8 w-8 border border-slate-300 bg-slate-100 font-mono text-xs text-slate-600";
+    th.className =
+      "h-8 w-8 border border-slate-300 bg-slate-100 font-mono text-xs text-slate-600";
     th.textContent = char;
     headerRow.append(th);
   });
@@ -53,14 +55,16 @@ function buildTable(s1, s2) {
   for (let i = 0; i <= s1.length; i += 1) {
     const row = document.createElement("tr");
     const left = document.createElement("th");
-    left.className = "h-8 w-8 border border-slate-300 bg-slate-100 font-mono text-xs text-slate-600";
+    left.className =
+      "h-8 w-8 border border-slate-300 bg-slate-100 font-mono text-xs text-slate-600";
     left.textContent = i === 0 ? "" : s1[i - 1];
     row.append(left);
 
     for (let j = 0; j <= s2.length; j += 1) {
       const cell = document.createElement("td");
       cell.id = `lcs-${i}-${j}`;
-      cell.className = "h-8 w-8 border border-slate-300 text-center font-mono text-xs text-slate-600";
+      cell.className =
+        "h-8 w-8 border border-slate-300 text-center font-mono text-xs text-slate-600";
       cell.textContent = "0";
       row.append(cell);
     }
@@ -73,8 +77,12 @@ export async function setup(ctx) {
 }
 
 export function run(ctx) {
-  const s1 = (document.getElementById("lcs-s1")?.value || "").trim().toUpperCase();
-  const s2 = (document.getElementById("lcs-s2")?.value || "").trim().toUpperCase();
+  const s1 = (document.getElementById("lcs-s1")?.value || "")
+    .trim()
+    .toUpperCase();
+  const s2 = (document.getElementById("lcs-s2")?.value || "")
+    .trim()
+    .toUpperCase();
   const m = s1.length;
   const n = s2.length;
 
@@ -84,10 +92,14 @@ export function run(ctx) {
   const row1 = document.getElementById("lcs-s1-row");
   const row2 = document.getElementById("lcs-s2-row");
   if (row1) {
-    row1.replaceChildren(...[...s1].map((char, idx) => tokenChip(char, `lcs-c1-${idx}`)));
+    row1.replaceChildren(
+      ...[...s1].map((char, idx) => tokenChip(char, `lcs-c1-${idx}`)),
+    );
   }
   if (row2) {
-    row2.replaceChildren(...[...s2].map((char, idx) => tokenChip(char, `lcs-c2-${idx}`)));
+    row2.replaceChildren(
+      ...[...s2].map((char, idx) => tokenChip(char, `lcs-c2-${idx}`)),
+    );
   }
 
   const steps = [];
@@ -101,7 +113,9 @@ export function run(ctx) {
           ctx.addLog(`dp[${ii}][${jj}] match '${s1[ii - 1]}' => ${dp[ii][jj]}`);
         } else {
           dp[ii][jj] = Math.max(dp[ii - 1][jj], dp[ii][jj - 1]);
-          ctx.addLog(`dp[${ii}][${jj}] = max(${dp[ii - 1][jj]}, ${dp[ii][jj - 1]})`);
+          ctx.addLog(
+            `dp[${ii}][${jj}] = max(${dp[ii - 1][jj]}, ${dp[ii][jj - 1]})`,
+          );
         }
 
         const cell = document.getElementById(`lcs-${ii}-${jj}`);
@@ -109,7 +123,9 @@ export function run(ctx) {
           cell.textContent = String(dp[ii][jj]);
           cell.className =
             "h-8 w-8 border border-slate-300 text-center font-mono text-xs " +
-            (dp[ii][jj] > 0 ? "bg-indigo-50 text-indigo-700" : "text-slate-600");
+            (dp[ii][jj] > 0
+              ? "bg-indigo-50 text-indigo-700"
+              : "text-slate-600");
         }
 
         if (ii === m && jj === n) {
@@ -131,12 +147,24 @@ export function run(ctx) {
           for (const char of lcs) {
             [...s1].forEach((token, idx) => {
               if (token === char) {
-                document.getElementById(`lcs-c1-${idx}`)?.classList.add("bg-indigo-100", "border-indigo-400", "text-indigo-700");
+                document
+                  .getElementById(`lcs-c1-${idx}`)
+                  ?.classList.add(
+                    "bg-indigo-100",
+                    "border-indigo-400",
+                    "text-indigo-700",
+                  );
               }
             });
             [...s2].forEach((token, idx) => {
               if (token === char) {
-                document.getElementById(`lcs-c2-${idx}`)?.classList.add("bg-indigo-100", "border-indigo-400", "text-indigo-700");
+                document
+                  .getElementById(`lcs-c2-${idx}`)
+                  ?.classList.add(
+                    "bg-indigo-100",
+                    "border-indigo-400",
+                    "text-indigo-700",
+                  );
               }
             });
           }

@@ -74,7 +74,10 @@ function buildRows(items) {
 }
 
 export function run(ctx) {
-  const cap = Math.max(1, parseNumber(document.getElementById("ks-cap")?.value, 50));
+  const cap = Math.max(
+    1,
+    parseNumber(document.getElementById("ks-cap")?.value, 50),
+  );
   const items = parseItems();
   buildRows(items);
 
@@ -110,11 +113,16 @@ export function run(ctx) {
         bar.style.width = `${(fraction * 100).toFixed(0)}%`;
         bar.className = "h-2 rounded bg-amber-500 transition-all";
       }
-      ctx.addLog(`${item.name}: take ${(fraction * 100).toFixed(0)}% (+${(fraction * item.v).toFixed(1)})`);
+      ctx.addLog(
+        `${item.name}: take ${(fraction * 100).toFixed(0)}% (+${(fraction * item.v).toFixed(1)})`,
+      );
       remaining = 0;
     }
 
-    ctx.renderSidebar("knapsack", `Total value: ${totalValue.toFixed(1)} | Remaining: ${remaining.toFixed(1)}kg`);
+    ctx.renderSidebar(
+      "knapsack",
+      `Total value: ${totalValue.toFixed(1)} | Remaining: ${remaining.toFixed(1)}kg`,
+    );
   });
 
   return { steps };

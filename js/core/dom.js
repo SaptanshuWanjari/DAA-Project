@@ -22,7 +22,9 @@ export function setTrustedHTML(id, html) {
 }
 
 export function setHTML() {
-  throw new Error("setHTML is disabled; use setTrustedHTML for trusted templates only.");
+  throw new Error(
+    "setHTML is disabled; use setTrustedHTML for trusted templates only.",
+  );
 }
 
 export function clearTimer(state) {

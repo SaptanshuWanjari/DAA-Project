@@ -1,12 +1,19 @@
 import { clearTimer, el, setTrustedHTML } from "./dom.js";
 import { ALGO_ORDER } from "./config.js";
-import { renderSidebar, addLog, createTrustedSidebarResult } from "./sidebar.js";
+import {
+  renderSidebar,
+  addLog,
+  createTrustedSidebarResult,
+} from "./sidebar.js";
 import { state } from "./state.js";
 
 const DEFAULT_SPEED_MS = 700;
-const SETUP_FAILURE_LOG_MESSAGE = "Unable to initialize this algorithm. Try selecting it again.";
+const SETUP_FAILURE_LOG_MESSAGE =
+  "Unable to initialize this algorithm. Try selecting it again.";
 
-const algorithmRegistry = Object.fromEntries(ALGO_ORDER.map((algo) => [algo, null]));
+const algorithmRegistry = Object.fromEntries(
+  ALGO_ORDER.map((algo) => [algo, null]),
+);
 
 /**
  * @typedef {object} AlgorithmRunnerContext
@@ -127,7 +134,9 @@ function createGuardedMethod(method, shouldApply) {
 }
 
 export function createAlgorithmContext(options = {}) {
-  const shouldApply = isFunction(options.shouldApply) ? options.shouldApply : () => true;
+  const shouldApply = isFunction(options.shouldApply)
+    ? options.shouldApply
+    : () => true;
 
   return {
     state,

@@ -28,7 +28,8 @@ function drawSeries(ns, o1, on, onlogn, on2) {
   const cw = w - pad.l - pad.r;
   const ch = h - pad.t - pad.b;
   const maxY = Math.max(...on2, 1);
-  const scaleX = (idx) => (ns.length <= 1 ? pad.l : pad.l + (idx / (ns.length - 1)) * cw);
+  const scaleX = (idx) =>
+    ns.length <= 1 ? pad.l : pad.l + (idx / (ns.length - 1)) * cw;
   const scaleY = (value) => pad.t + ch - (value / maxY) * ch;
 
   ctx.clearRect(0, 0, w, h);
@@ -69,7 +70,11 @@ function drawSeries(ns, o1, on, onlogn, on2) {
     ctx.stroke();
     ctx.fillStyle = item.color;
     ctx.font = "11px JetBrains Mono";
-    ctx.fillText(item.label, w - pad.r - 74, scaleY(item.data[item.data.length - 1]) + 4);
+    ctx.fillText(
+      item.label,
+      w - pad.r - 74,
+      scaleY(item.data[item.data.length - 1]) + 4,
+    );
   }
 
   ctx.strokeStyle = "#94a3b8";
@@ -95,8 +100,12 @@ export async function setup(ctx) {
 export function run(ctx) {
   const nInput = document.getElementById("cx-n");
   const n = Math.max(2, Math.min(60, parseInteger(nInput?.value, 10)));
-  const temps = Array.from({ length: n }, () => Number((20 + Math.random() * 15).toFixed(1)));
-  const press = Array.from({ length: n }, () => Number((1000 + Math.random() * 50).toFixed(1)));
+  const temps = Array.from({ length: n }, () =>
+    Number((20 + Math.random() * 15).toFixed(1)),
+  );
+  const press = Array.from({ length: n }, () =>
+    Number((1000 + Math.random() * 50).toFixed(1)),
+  );
   const ns = Array.from({ length: n }, (_, i) => i + 1);
   const o1 = ns.map(() => 1);
   const on = ns.map((x) => x);
@@ -107,10 +116,17 @@ export function run(ctx) {
     steps: [
       () => {
         ctx.addLog(`n = ${n} sensor readings generated`);
-        ctx.addLog(`Temp range: ${Math.min(...temps).toFixed(1)}C to ${Math.max(...temps).toFixed(1)}C`);
-        ctx.addLog(`Pressure range: ${Math.min(...press).toFixed(1)} to ${Math.max(...press).toFixed(1)} Pa`);
+        ctx.addLog(
+          `Temp range: ${Math.min(...temps).toFixed(1)}C to ${Math.max(...temps).toFixed(1)}C`,
+        );
+        ctx.addLog(
+          `Pressure range: ${Math.min(...press).toFixed(1)} to ${Math.max(...press).toFixed(1)} Pa`,
+        );
         drawSeries(ns, o1, on, onlogn, on2);
-        ctx.renderSidebar("complexity", `Sensor readings: ${n} | Max temp: ${Math.max(...temps).toFixed(1)}C`);
+        ctx.renderSidebar(
+          "complexity",
+          `Sensor readings: ${n} | Max temp: ${Math.max(...temps).toFixed(1)}C`,
+        );
         ctx.addLog(`O(1): constant, 1 operation`);
         ctx.addLog(`O(n): linear, ${n} operations`);
         ctx.addLog(`O(n log n): ${onlogn[n - 1]} operations`);

@@ -20,7 +20,9 @@ export async function loadInputPartial(slug, fallbackHtml = "") {
   }
 
   try {
-    const response = await fetch(`partials/inputs/${slug}.html`, { cache: "no-store" });
+    const response = await fetch(`partials/inputs/${slug}.html`, {
+      cache: "no-store",
+    });
     if (response.ok) {
       const html = await response.text();
       PARTIAL_CACHE.set(slug, html);
@@ -52,7 +54,8 @@ export function getCanvasContext(canvasId, height = 300) {
     return null;
   }
 
-  const parentWidth = canvas.parentElement?.clientWidth || canvas.clientWidth || 1;
+  const parentWidth =
+    canvas.parentElement?.clientWidth || canvas.clientWidth || 1;
   canvas.width = Math.max(1, parentWidth);
   canvas.height = height;
   const context = canvas.getContext("2d");

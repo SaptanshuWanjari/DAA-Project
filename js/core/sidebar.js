@@ -35,7 +35,10 @@ function renderStepLog() {
   }
 
   logNode.innerHTML = state.logs
-    .map((entry) => `<div class="text-xs text-slate-700">${escapeHtml(entry)}</div>`)
+    .map(
+      (entry) =>
+        `<div class="text-xs text-slate-700">${escapeHtml(entry)}</div>`,
+    )
     .join("");
   logNode.scrollTop = logNode.scrollHeight;
 }
@@ -57,9 +60,9 @@ export function createTrustedSidebarResult(templateKey) {
 function isTrustedSidebarResult(value) {
   return Boolean(
     value &&
-      typeof value === "object" &&
-      value[TRUSTED_RESULT_BRAND] === true &&
-      typeof value.html === "string",
+    typeof value === "object" &&
+    value[TRUSTED_RESULT_BRAND] === true &&
+    typeof value.html === "string",
   );
 }
 

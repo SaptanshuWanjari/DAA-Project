@@ -1,7 +1,30 @@
-import { clamp, getCanvasContext, parseInteger, setupAlgoShell } from "./shared.js";
+import {
+  clamp,
+  getCanvasContext,
+  parseInteger,
+  setupAlgoShell,
+} from "./shared.js";
 
-const COLORS = ["#e879f9", "#14b8a6", "#eab308", "#ef4444", "#84cc16", "#6366f1", "#f97316", "#38bdf8"];
-const COLOR_NAMES = ["Violet", "Teal", "Yellow", "Red", "Green", "Indigo", "Orange", "Sky"];
+const COLORS = [
+  "#e879f9",
+  "#14b8a6",
+  "#eab308",
+  "#ef4444",
+  "#84cc16",
+  "#6366f1",
+  "#f97316",
+  "#38bdf8",
+];
+const COLOR_NAMES = [
+  "Violet",
+  "Teal",
+  "Yellow",
+  "Red",
+  "Green",
+  "Indigo",
+  "Orange",
+  "Sky",
+];
 
 const DEFAULT_NODES = [
   { x: 0.5, y: 0.1, label: "0" },
@@ -22,7 +45,11 @@ const DEFAULT_ADJ = [
 ];
 
 const PRESETS = [
-  { label: "6-node (pentagon + center)", nodes: DEFAULT_NODES, adj: DEFAULT_ADJ },
+  {
+    label: "6-node (pentagon + center)",
+    nodes: DEFAULT_NODES,
+    adj: DEFAULT_ADJ,
+  },
   {
     label: "Cycle C5",
     nodes: [
@@ -201,7 +228,9 @@ export async function setup(ctx) {
   if (!Number.isInteger(ctx.state.gcPreset)) {
     ctx.state.gcPreset = 0;
   }
-  if (!(await setupAlgoShell(ctx, "graphcoloring", INPUTS_FALLBACK, VIZ_HTML))) {
+  if (
+    !(await setupAlgoShell(ctx, "graphcoloring", INPUTS_FALLBACK, VIZ_HTML))
+  ) {
     return;
   }
   applyPreset(ctx, ctx.state.gcPreset);
@@ -211,7 +240,11 @@ export async function setup(ctx) {
 }
 
 export function run(ctx) {
-  const maxColors = clamp(parseInteger(document.getElementById("gc-m")?.value, 3), 1, COLORS.length);
+  const maxColors = clamp(
+    parseInteger(document.getElementById("gc-m")?.value, 3),
+    1,
+    COLORS.length,
+  );
   gcColors = Array(gcNodes.length).fill(-1);
   const n = gcNodes.length;
   let solutionFound = false;
@@ -236,7 +269,10 @@ export function run(ctx) {
         renderPalette();
         const used = new Set(snapshot).size;
         ctx.addLog(`Solution found using ${used} color(s)`);
-        ctx.renderSidebar("graphcoloring", `Solution found | Colors used: ${used} | Max allowed: ${maxColors}`);
+        ctx.renderSidebar(
+          "graphcoloring",
+          `Solution found | Colors used: ${used} | Max allowed: ${maxColors}`,
+        );
       });
       return true;
     }
@@ -277,7 +313,10 @@ export function run(ctx) {
   if (!solutionFound && steps.length === 0) {
     steps.push(() => {
       ctx.addLog("No valid coloring found.");
-      ctx.renderSidebar("graphcoloring", "No valid coloring. Increase m and retry.");
+      ctx.renderSidebar(
+        "graphcoloring",
+        "No valid coloring. Increase m and retry.",
+      );
     });
   }
 

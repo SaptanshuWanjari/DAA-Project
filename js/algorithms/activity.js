@@ -13,7 +13,8 @@ A7,2,4</textarea>
   </label>
 `;
 
-const VIZ_HTML = '<div id="act-timeline" class="relative h-56 overflow-x-auto rounded-md border border-slate-200 bg-white"></div>';
+const VIZ_HTML =
+  '<div id="act-timeline" class="relative h-56 overflow-x-auto rounded-md border border-slate-200 bg-white"></div>';
 
 function parseActivities() {
   const lines = (document.getElementById("act-items")?.value || "")
@@ -51,11 +52,20 @@ function buildTimeline(activities) {
     timeline.append(marker);
   }
 
-  const colors = ["#6366f1", "#14b8a6", "#ef4444", "#eab308", "#84cc16", "#f97316", "#06b6d4"];
+  const colors = [
+    "#6366f1",
+    "#14b8a6",
+    "#ef4444",
+    "#eab308",
+    "#84cc16",
+    "#f97316",
+    "#06b6d4",
+  ];
   activities.forEach((activity, idx) => {
     const bar = document.createElement("div");
     bar.id = `act-${idx}`;
-    bar.className = "absolute rounded px-2 py-1 text-[11px] font-mono font-semibold";
+    bar.className =
+      "absolute rounded px-2 py-1 text-[11px] font-mono font-semibold";
     const color = colors[idx % colors.length];
     bar.style.left = `calc(4% + ${(activity.s / maxEnd) * 92}%)`;
     bar.style.width = `${((activity.e - activity.s) / maxEnd) * 92}%`;
@@ -94,7 +104,10 @@ export function run(ctx) {
       }
       ctx.addLog(`${activity.name} [${activity.s}-${activity.e}] skipped`);
     }
-    ctx.renderSidebar("activity", `Selected: ${selected.length} | ${selected.map((entry) => entry.name).join(", ") || "-"}`);
+    ctx.renderSidebar(
+      "activity",
+      `Selected: ${selected.length} | ${selected.map((entry) => entry.name).join(", ") || "-"}`,
+    );
   });
 
   return { steps };

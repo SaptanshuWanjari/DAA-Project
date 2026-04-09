@@ -87,7 +87,10 @@ const VIZ_HTML = `
 `;
 
 function getCurrentCase(state) {
-  const index = Math.max(0, Math.min(MST_TEST_CASES.length - 1, parseInteger(state.mstTC, 0)));
+  const index = Math.max(
+    0,
+    Math.min(MST_TEST_CASES.length - 1, parseInteger(state.mstTC, 0)),
+  );
   return { index, tc: MST_TEST_CASES[index] };
 }
 
@@ -129,11 +132,24 @@ function drawGraph(tc, currentEdge = null) {
   tc.edges.forEach((edge) => {
     const a = tc.nodes[edge.u];
     const b = tc.nodes[edge.v];
-    const isSelected = selectedEdges.some((e) => e.u === edge.u && e.v === edge.v && e.w === edge.w);
-    const isCurrent = currentEdge && currentEdge.u === edge.u && currentEdge.v === edge.v;
-    const isCycle = cycleEdge && cycleEdge.u === edge.u && cycleEdge.v === edge.v && cycleEdge.w === edge.w;
+    const isSelected = selectedEdges.some(
+      (e) => e.u === edge.u && e.v === edge.v && e.w === edge.w,
+    );
+    const isCurrent =
+      currentEdge && currentEdge.u === edge.u && currentEdge.v === edge.v;
+    const isCycle =
+      cycleEdge &&
+      cycleEdge.u === edge.u &&
+      cycleEdge.v === edge.v &&
+      cycleEdge.w === edge.w;
 
-    ctx.strokeStyle = isCycle ? "#ef4444" : isSelected ? "#14b8a6" : isCurrent ? "#eab308" : "#94a3b8";
+    ctx.strokeStyle = isCycle
+      ? "#ef4444"
+      : isSelected
+        ? "#14b8a6"
+        : isCurrent
+          ? "#eab308"
+          : "#94a3b8";
     ctx.lineWidth = isCycle || isSelected ? 3 : 1.5;
     if (isCycle) {
       ctx.setLineDash([5, 3]);
@@ -151,7 +167,9 @@ function drawGraph(tc, currentEdge = null) {
   });
 
   tc.nodes.forEach((node, index) => {
-    const included = selectedEdges.some((edge) => edge.u === index || edge.v === index);
+    const included = selectedEdges.some(
+      (edge) => edge.u === index || edge.v === index,
+    );
     ctx.fillStyle = included ? "#ecfeff" : "#f8fafc";
     ctx.beginPath();
     ctx.arc(nx(node), ny(node), 20, 0, Math.PI * 2);
@@ -187,7 +205,9 @@ function updateCycleWarning(message = "") {
 
 function updateResult(ctx, tc) {
   const total = selectedEdges.reduce((sum, edge) => sum + edge.w, 0);
-  const edges = selectedEdges.map((edge) => `${tc.nodes[edge.u].label}-${tc.nodes[edge.v].label}`).join(", ");
+  const edges = selectedEdges
+    .map((edge) => `${tc.nodes[edge.u].label}-${tc.nodes[edge.v].label}`)
+    .join(", ");
   ctx.renderSidebar(
     "mst",
     `Cost: ${total} | Edges: ${edges || "-"} | Progress: ${selectedEdges.length}/${tc.nodes.length - 1}`,
@@ -266,13 +286,17 @@ export function run(ctx) {
       cycleEdge = null;
       updateCycleWarning("");
       drawGraph(tc, edge);
-      ctx.addLog(`ADD ${nodes[edge.u].label}-${nodes[edge.v].label} (w=${edge.w})`);
+      ctx.addLog(
+        `ADD ${nodes[edge.u].label}-${nodes[edge.v].label} (w=${edge.w})`,
+      );
     } else {
       cycleEdge = { ...edge };
       const message = `Edge ${nodes[edge.u].label}-${nodes[edge.v].label} (weight ${edge.w}) creates a cycle.`;
       updateCycleWarning(message);
       drawGraph(tc, null);
-      ctx.addLog(`REJECT ${nodes[edge.u].label}-${nodes[edge.v].label} (w=${edge.w}) - cycle`);
+      ctx.addLog(
+        `REJECT ${nodes[edge.u].label}-${nodes[edge.v].label} (w=${edge.w}) - cycle`,
+      );
     }
     updateResult(ctx, tc);
   });
