@@ -1,0 +1,47 @@
+flowchart TB
+    subgraph Browser["Browser"]
+        index["index.html"] --> app["#app Container"]
+        app --> partials["partials/*.html"]
+    end
+
+    subgraph Core["js/core/"]
+        main["main.js"]
+        state["state.js"]
+        runner["runner.js"]
+        config["config.js"]
+        dom["dom.js"]
+        sidebar["sidebar.js"]
+    end
+
+    subgraph Algos["js/algorithms/"]
+        complexity["complexity.js"]
+        mst["mst.js"]
+        knapsack["knapsack.js"]
+        activity["activity.js"]
+        subarray["subarray.js"]
+        lcs["lcs.js"]
+        obst["obst.js"]
+        hamiltonian["hamiltonian.js"]
+        graphcoloring["graphcoloring.js"]
+    end
+
+    index --> main
+    main --> state
+    main --> runner
+    main --> config
+    main --> dom
+    main --> sidebar
+    main --> complexity
+    main --> mst
+    main --> knapsack
+    main --> activity
+    main --> subarray
+    main --> lcs
+    main --> obst
+    main --> hamiltonian
+    main --> graphcoloring
+
+    runner -.->|"use/manage"| state
+    sidebar -.->|"read/write"| state
+    runner -.-> dom
+    runner -.-> sidebar

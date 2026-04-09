@@ -1,0 +1,26 @@
+stateDiagram-v2
+    [*] --> Initialized: App loads
+
+    Initialized --> HomePage: htmx loads home.html
+    HomePage --> HomePage: Click nav Home
+    HomePage --> AlgoPage: Click algorithm card
+
+    AlgoPage --> LoadingSetup: setupCurrentAlgo()
+    LoadingSetup --> AlgoReady: setup() succeeds
+    LoadingSetup --> SetupError: setup() throws
+    SetupError --> AlgoReady: User retries
+
+    AlgoReady --> ReadyToRun: User clicked algo
+    ReadyToRun --> Running: Click Run
+    ReadyToRun --> Stepping: Click Step
+    ReadyToRun --> Resetting: Click Reset
+
+    Running --> Running: Interval tick
+    Running --> Paused: Click Pause
+    Running --> Complete: All steps done
+    Running --> Resetting: Click Reset
+
+    Stepping --> ReadyToRun: Step complete
+    Complete --> ReadyToRun: Reset
+    Resetting --> Initialized: Clear state
+    Resetting --> ReadyToRun: Re-render sidebar

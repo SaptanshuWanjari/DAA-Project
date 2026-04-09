@@ -1,0 +1,40 @@
+sequenceDiagram
+    participant U as User
+    participant B as Browser
+    participant H as htmx
+    participant M as main.js
+    participant S as state.js
+    participant R as runner.js
+
+    B->>U: User visits site
+    B->>B: index.html loads
+
+    rect rgb(240, 248, 255)
+        Note over B,H: Page Initialization
+        H->>H: hx-trigger="load"
+        H-->>B: Fetch partials/home.html
+        B-->>H: Return home.html content
+    end
+
+    rect rgb(232, 242, 254)
+        Note over H,M: HTMX After Swap Event
+        H->>M: htmx:afterSwap
+        M->>M: onAfterSwap(evt)
+    end
+
+    rect rgb(230, 242, 232)
+        Note over M,S: Detect Page Type
+        M->>M: initPageFromApp(target)
+        alt #app contains #home-page
+            M->>M: initHomePage()
+            M->>S: resetTransientState()
+            S->>S: clearTimer, reset stepQueue/logs
+        else #app contains #algo-page
+            M->>M: initAlgorithmPage()
+            M->>S: state.currentAlgo = slug
+            M->>M: renderSidebar(slug)
+            M->>R: setupCurrentAlgo()
+        end
+    end
+
+    U->>U: Page rendered

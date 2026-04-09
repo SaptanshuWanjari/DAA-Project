@@ -1,0 +1,26 @@
+graph TD
+    subgraph Docs["docs/"]
+        arch["architecture-overview.mmd"]
+        page["page-load-flow.mmd"]
+        algo["algo-execution-flow.mmd"]
+        ctx["runner-context.mmd"]
+        state["state-transitions.mmd"]
+        htmx["htmx-routing-flow.mmd"]
+        files["file-structure.mmd"]
+    end
+
+    subgraph Root["DAA-Project Root"]
+        html["index.html"]
+        partials["partials/"]
+        js["js/"]
+    end
+
+    arch -.->|describes| html
+    arch -.->|describes| partials
+    arch -.->|describes| js
+    page -.->|flow of| html
+    algo -.->|describes| js/main.js
+    algo -.->|describes| js/core/runner.js
+    ctx -.->|defines context for| js/core/runner.js
+    state -.->|manages| js/core/state.js
+    htmx -.->|handles| js/main.js

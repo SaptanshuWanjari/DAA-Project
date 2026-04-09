@@ -1,0 +1,40 @@
+flowchart LR
+    subgraph Creator["createAlgorithmContext()"]
+        ctx["Context Object"]
+    end
+
+    subgraph ContextProps["Context Properties"]
+        S["state"]
+        AL["addLog"]
+        RS["renderSidebar"]
+        GS["getSpeedMs"]
+        CT["clearTimer"]
+        EL["el()"]
+        ST["setTrustedHTML()"]
+        IA["isActive()"]
+    end
+
+    subgraph Usage["Usage in Algorithms"]
+        setup["setup(ctx)"]
+        run["run(ctx)"]
+        reset["reset(ctx)"]
+        action["action(ctx, node)"]
+    end
+
+    ctx --> S
+    ctx --> AL
+    ctx --> RS
+    ctx --> GS
+    ctx --> CT
+    ctx --> EL
+    ctx --> ST
+    ctx --> IA
+
+    S --> setup
+    S --> run
+    S --> reset
+    S --> action
+    AL --> setup
+    AL --> run
+    RS --> run
+    GS --> run

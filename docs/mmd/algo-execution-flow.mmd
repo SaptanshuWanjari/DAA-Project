@@ -1,0 +1,54 @@
+flowchart TB
+    subgraph UserActions["User Actions"]
+        click["Click Run/Step/Reset"]
+    end
+
+    subgraph Event["Event Handling"]
+        e1["onDelegatedAction(evt)"]
+        e2["allowsDelegatedEvent?"]
+        e3["CLICK_ONLY_ACTIONS?"]
+    end
+
+    subgraph Actions["Action Processing"]
+        run["runAlgo()"]
+        step["stepAlgo()"]
+        reset["resetAlgo()"]
+    end
+
+    subgraph Runner["runner.js"]
+        init["initializeQueueIfNeeded()"]
+        resolve["resolveRunnerHandler()"]
+        apply["applyRunnerOutcome()"]
+        queue["state.stepQueue"]
+        queueIdx["state.stepIdx"]
+    end
+
+    subgraph Execution["Step Execution"]
+        timer["setInterval"]
+        next["runNextQueuedStep()"]
+        exec["Execute step()"]
+        check["stepIdx >= queue.length?"]
+    end
+
+    click --> e1
+    e1 --> e2
+    e2 -->|Yes| e3
+    e3 -->|action=run| run
+    e3 -->|action=step| step
+    e3 -->|action=reset| reset
+
+    run --> init
+    step --> init
+    reset -->|"clear & reset"| runner
+
+    init --> resolve
+    resolve -->|"get handler"| apply
+    apply -->|"outcome.steps"| queue
+    queue -->|"state.stepQueue"| timer
+
+    timer -->|"interval"| next
+    next --> exec
+    exec --> check
+    check -->|No| next
+    check -->|Yes| timer
+    check -->|Yes| clearTimer
