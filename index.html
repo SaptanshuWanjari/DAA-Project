@@ -10,9 +10,10 @@
   <header class="sticky top-0 z-10 border-b border-slate-200 bg-white/95 backdrop-blur">
     <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4">
       <div class="logo text-lg font-bold tracking-wide">DAA<span class="text-cyan-600">_</span>VISUALIZER</div>
-      <nav class="flex items-center gap-2 text-sm font-medium">
+      <nav class="flex items-center gap-2 text-sm font-medium" aria-label="Primary">
       <a
-        class="active rounded-md bg-slate-900 px-3 py-2 text-white"
+        class="active rounded-md bg-slate-900 px-3 py-2 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2"
+        data-page-link="home"
         href="#/home"
         hx-get="partials/home.html"
         hx-target="#app"
@@ -21,11 +22,12 @@
         Home
       </a>
       <a
-        class="rounded-md px-3 py-2 text-slate-700 transition hover:bg-slate-200"
-        href="#/home"
+        class="rounded-md px-3 py-2 text-slate-700 transition hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2"
+        data-page-link="algorithms"
+        href="#/algorithms"
         hx-get="partials/home.html"
         hx-target="#app"
-        hx-push-url="#/home"
+        hx-push-url="#/algorithms"
       >
         Algorithms
       </a>
