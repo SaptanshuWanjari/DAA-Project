@@ -33,25 +33,38 @@ function parseValues() {
   return { keys, probs };
 }
 
+const MAX_RECURSION_DEPTH = 20;
+
 function drawTree(keys, root) {
   const chart = getCanvasContext("obst-canvas", 300);
   if (!chart) {
     return;
   }
 
+  if (!root || !keys || keys.length === 0) {
+    return;
+  }
+
   const { ctx, width, height } = chart;
   ctx.clearRect(0, 0, width, height);
 
+  let depth = 0;
+
   function draw(lo, hi, x, y, dx) {
-    if (lo > hi) {
+    depth += 1;
+    if (depth > MAX_RECURSION_DEPTH || lo > hi) {
       return;
     }
-    const r = root[lo][hi] - 1;
-    if (r < 0) {
+    const r = root[lo]?.[hi];
+    if (r == null || r === 0) {
+      return;
+    }
+    const keyIndex = r - 1;
+    if (keyIndex < 0 || keyIndex >= keys.length) {
       return;
     }
 
-    if (lo < r) {
+    if (lo <= r - 1 && lo < hi) {
       const lx = x - dx;
       const ly = y + 68;
       ctx.strokeStyle = "#94a3b8";
@@ -63,7 +76,7 @@ function drawTree(keys, root) {
       draw(lo, r - 1, lx, ly, dx / 2);
     }
 
-    if (r < hi) {
+    if (r + 1 <= hi && r < hi) {
       const rx = x + dx;
       const ry = y + 68;
       ctx.strokeStyle = "#94a3b8";
@@ -86,7 +99,7 @@ function drawTree(keys, root) {
     ctx.font = "bold 12px JetBrains Mono";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText(String(keys[r]), x, y);
+    ctx.fillText(String(keys[keyIndex]), x, y);
   }
 
   draw(1, keys.length, width / 2, Math.min(40, height - 40), width / 5);
